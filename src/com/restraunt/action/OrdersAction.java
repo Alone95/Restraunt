@@ -15,7 +15,11 @@ import com.restraunt.entity.Orderdts;
 import com.restraunt.entity.Orders;
 import com.restraunt.entity.Pager;
 import com.restraunt.entity.Users;
-
+/**
+ * 
+ * @author lds
+ *
+ */
 public class OrdersAction extends ActionSupport implements RequestAware,SessionAware {
 	OrdersBiz ordersBiz;	
 	public void setOrdersBiz(OrdersBiz ordersBiz) {
@@ -27,7 +31,9 @@ public class OrdersAction extends ActionSupport implements RequestAware,SessionA
 		this.orderDtsBiz = orderDtsBiz;
 	}
 	
-	//封装“查看”超链接传递来的参数oid的值
+	/**
+	 * 封装“查看”超链接传递来的参数oid的值
+	 */
 	int oid;
 	public int getOid() {
 		return oid;
@@ -36,7 +42,9 @@ public class OrdersAction extends ActionSupport implements RequestAware,SessionA
 		this.oid = oid;
 	}
 	
-	//封装manageorders.jsp页面中根据订单号和订单状态查询时传递来的参数值
+	/**
+	 * 封装manageorders.jsp页面中根据订单号和订单状态查询时传递来的参数值
+	 */
 	private Orders orders;
 	public Orders getOrders() {
 		return orders;
@@ -45,7 +53,11 @@ public class OrdersAction extends ActionSupport implements RequestAware,SessionA
 		this.orders = orders;
 	}
 	
-	//处理生成新订单请求
+	/**
+	 * 处理生成新订单请求
+	 * @return "show"
+	 * @throws Exception
+	 */
 	public String addOrders() throws Exception {
 		Orders orders=new Orders();
 		orders.setOrderState("未处理");
@@ -69,7 +81,9 @@ public class OrdersAction extends ActionSupport implements RequestAware,SessionA
 		return "show";
 	}
 	
-	//分页实体类
+	/**
+	 * 分页实体类
+	 */
 	private Pager pager;
 	public Pager getPager() {
 		return pager;
@@ -78,7 +92,11 @@ public class OrdersAction extends ActionSupport implements RequestAware,SessionA
 		this.pager = pager;
 	}
 
-	//获取指定用户的订单列表,再转到我的订单页myorders.jsp
+	/**
+	 * 获取指定用户的订单列表,再转到我的订单页myorders.jsp
+	 * @return "myorders"
+	 * @throws Exception
+	 */
 	public String toMyOrders() throws Exception {
 		Users user=(Users)session.get("user");
 		List myOrdersList=ordersBiz.getOrdersByUserId(user.getId());
@@ -86,21 +104,33 @@ public class OrdersAction extends ActionSupport implements RequestAware,SessionA
 		return "myorders";
 	}
 	
-	//根据订单主表编号获取订单明细列表,再转到我的订单明细页myordersdetails.jsp
+	/**
+	 * 根据订单主表编号获取订单明细列表,再转到我的订单明细页myordersdetails.jsp
+	 * @return "toOrdersDetails"
+	 * @throws Exception
+	 */
 	public String toOrdersDetails() throws Exception {
 		List ordersDtsList= orderDtsBiz.getOrderDtsByOid(oid);
 		request.put("ordersDtsList", ordersDtsList);
 		return "toOrdersDetails";
 	}
 	
-	//删除指定编号的订单,再转到toMyOrders
+	/**
+	 * 删除指定编号的订单,再转到toMyOrders
+	 * @return "toMyOrders"
+	 * @throws Exception
+	 */
 	public String deleteOrders() throws Exception {		
 		//调用业务方法从数据表中删除订单及明细
 		ordersBiz.deleteOrdersByOid(oid);
 		return "toMyOrders";
 	}
 	
-	//获取所有订单列表,再转到订单处理页manageorders.jsp
+	/**
+	 * 获取所有订单列表,再转到订单处理页manageorders.jsp
+	 * @return "manageorders"
+	 * @throws Exception
+	 */
 	public String toManageOrders() throws Exception {
 		int curPage=1;
 		if(pager!=null)
@@ -128,7 +158,11 @@ public class OrdersAction extends ActionSupport implements RequestAware,SessionA
 		return "manageorders";
 	}
 	
-	//处理订单,再转到toManageOrders
+	/**
+	 * 处理订单,再转到toManageOrders
+	 * @return "toManageOrders"
+	 * @throws Exception
+	 */
 	public String handleOrders() throws Exception {		
 		//调用业务方法从数据表中删除订单及明细
 		Orders orders=ordersBiz.getOrdersByOid(oid);

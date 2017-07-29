@@ -10,13 +10,13 @@ HTML {
 BODY {
 	FONT-SIZE: 12px;
 	COLOR: #000000;
-	FONT-FAMILY: ËÎÌå
+	FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½
 }
 
 TD {
 	FONT-SIZE: 12px;
 	COLOR: #000000;
-	FONT-FAMILY: ËÎÌå
+	FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½
 }
 
 TD {
@@ -74,4 +74,8 @@ A {
 	PADDING-TOP: 2px;
 	BORDER-BOTTOM: #333333 1px solid
 	
+}
+
+#footer{
+	text-align:center;
 }

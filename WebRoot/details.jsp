@@ -7,17 +7,14 @@
 	<link rel="stylesheet" href="/Restraunt/css/styles.css" type="text/css" />
   </head>
   
-  <body>
+  <body style="background-color:#FCFCF2">
     <table width="90%" height="629" border="0" cellpadding="0"
 			cellspacing="0" align="center">
 			<tr>
 				<tr>
-				<td width="200" height="101">
-					<img src="images/jb_logo.jpg" width="64" height="32" />
-					<strong><span
-						style="font-size: 20px;">网上订餐系统</span> </strong>
-				</td>
-				<td width="640" style="padding-left: 40px;">
+				<td width="350" height="171"><img src="images/top_logo.jpg"
+				width="179" height="170" /> </td>
+				<td width="490" style="padding-left: 40px;">
 					
 				</td>
 			</tr>
@@ -42,6 +39,7 @@
 					<s:if test="#session.admin!=null">
 					<a href="/Restraunt/toAddMeal">添加餐品</a> |
 					<a href="/Restraunt/toManageMeal">管理餐品</a> |
+					<a href="/Restraunt/getAllUsers">查看用户</a> |
 					<a href="/Restraunt/toManageOrders">订单处理</a> |
 					<a href="/Restraunt/logOut?type=adminlogout">注销</a> &nbsp;&nbsp; &nbsp;&nbsp;
 					<font style="color: red">欢迎您：${sessionScope.admin.loginName }</font>
@@ -56,7 +54,7 @@
 						<img src="images/003.gif" width="191" height="8">
 				</td>
 				<td valign="top" width="80%">
-					<img src="images/001.jpg" width="595" height="72" />
+					<img src="images/001.jpg" width="100%" height="72" />
 					<br />
 					<div style="background-image:url(images/004.gif)">
 						&nbsp;

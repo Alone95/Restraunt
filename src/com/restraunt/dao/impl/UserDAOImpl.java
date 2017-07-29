@@ -9,6 +9,7 @@ import org.hibernate.criterion.Example;
 
 import com.restraunt.dao.UserDAO;
 import com.restraunt.entity.Admin;
+import com.restraunt.entity.Meal;
 import com.restraunt.entity.Users;
 
 public class UserDAOImpl implements UserDAO {
@@ -62,5 +63,28 @@ public class UserDAOImpl implements UserDAO {
 		Session session=sessionFactory.getCurrentSession();
 		session.update(users);
 	}
+	
+	//获取所有用户的信息
+	@Override
+	public List getAllUsers(int page) {
+		List list =null;
+		Session session = sessionFactory.getCurrentSession();
+		Criteria u =session.createCriteria(Users.class);
+		u.setFirstResult(5 * (page - 1));
+		u.setMaxResults(5);
+		list=u.list();
+		
+		return list;
+		
+	}
+	//获取用户的人数
+	@Override
+	public Integer getCountOfUser(){
+		Session session = sessionFactory.getCurrentSession();
+		Criteria c = session.createCriteria(Users.class);
+		return c.list().size();
+		
+	}
+	
 
 }

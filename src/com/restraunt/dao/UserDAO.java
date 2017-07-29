@@ -17,4 +17,9 @@ public interface UserDAO {
 	
 	//修改个人信息
 	public void modifyUsers(Users users);
+	
+	//获取所有用户信息
+	public List getAllUsers(int page);
+	
+	public Integer getCountOfUser();
 }

@@ -28,7 +28,7 @@
         <property name="address" type="java.lang.String">
             <column name="Address" length="50" />
         </property>
-        <set name="orderses" inverse="true">
+        <set name="orderses" inverse="true" lazy="false">
             <key>
                 <column name="UserId" />
             </key>

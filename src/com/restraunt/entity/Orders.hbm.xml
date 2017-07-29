@@ -22,7 +22,7 @@
         <property name="orderPrice" type="java.lang.Double">
             <column name="OrderPrice" precision="8" />
         </property>
-        <set name="orderdtses" inverse="true">
+        <set name="orderdtses" cascade="all" inverse="true" lazy="false">
             <key>
                 <column name="OID" />
             </key>

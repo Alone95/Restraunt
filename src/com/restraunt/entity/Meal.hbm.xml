@@ -10,7 +10,7 @@
             <column name="MealId" />
             <generator class="native" />
         </id>
-        <many-to-one name="mealseries" class="com.restraunt.entity.Mealseries" fetch="select">
+        <many-to-one name="mealseries" class="com.restraunt.entity.Mealseries" fetch="select" lazy="false">
             <column name="MealSeriesId" />
         </many-to-one>
         <property name="mealName" type="java.lang.String">
@@ -28,7 +28,7 @@
         <property name="mealImage" type="java.lang.String">
             <column name="MealImage" length="20" />
         </property>
-        <set name="orderdtses" inverse="true">
+        <set name="orderdtses" inverse="true" lazy="false" cascade="delete">
             <key>
                 <column name="MealId" />
             </key>

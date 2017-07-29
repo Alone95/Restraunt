@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>购物车页面</title>
+<title>查看所有用户</title>
 <link rel="stylesheet" href="/Restraunt/css/styles.css" type="text/css" />
 </head>
 
@@ -12,7 +12,7 @@
 		cellspacing="0" align="center">
 		<tr>
 			<td width="350" height="171"><img src="images/top_logo.jpg"
-				width="179" height="170" /> </td>
+				width="179" height="170" /></td>
 			<td width="490" style="padding-left: 40px;"></td>
 		</tr>
 		<tr>
@@ -37,6 +37,7 @@
 					<a href="/Restraunt/logOut?type=adminlogout">注销</a> &nbsp;&nbsp; &nbsp;&nbsp;
 					<font style="color: red">欢迎您：${sessionScope.admin.loginName }</font>
 				</s:if>
+
 			</td>
 		</tr>
 		<tr>
@@ -47,60 +48,62 @@
 			</td>
 			<td valign="top" width="80%"><img src="images/001.jpg"
 				width="100%" height="72" /> <br />
+				<div align="left">
+					
+				</div>
+
 				<div style="background-image:url(images/004.gif)">&nbsp;</div> <br />
-				<img src="images/zdkf.jpg" align="top" /> 您的购物车中有以下商品 <br />
+				<img src="images/icon_order.gif" align="top" /> 用户列表 <br />
 				<hr />
 				<table align="center" width="95%" cellspacing="0" cellpadding="3"
 					style="text-align:center; border:1px #cccccc solid;">
 					<tr style="background-color:#CCCCFF;">
-						<td>编号</td>
-						<td>商品名称</td>
-						<td>单价</td>
-						<td>数量</td>
-						<td>金额</td>
-						<td>删除</td>
+						<td>用户编号</td>
+						<td>用户名称</td>
+						<td>用户姓名</td>
+						<td>电子邮箱</td>
+						<td>手机号</td>
+						<td>详细地址</td>
 					</tr>
-					<s:set var="sumPrice" value="0" />
-					<s:iterator id="cartItem" value="#session.cart">
+					<s:set var="total" value="0" />
+					<s:iterator id="user" value="#request.userslist">
 						<tr style="background-color:#FFFFFF;">
-							<td><s:property value="value.meal.mealId" /></td>
-							<td><s:property value="value.meal.mealName" /></td>
-							<td>￥<s:property value="value.meal.mealPrice" />
-							</td>
-							<td><input type="text" value="${value.quantity}" size="10"
-								onchange="window.location='updateSelectedQuantity?mealId=${value.meal.mealId}&quantity='+this.value;">
-							</td>
-							<td>￥<s:property value="value.quantity*value.meal.mealPrice" />
-							</td>
-							<td><a
-								href="deleteSelectedOrders?mealId=${value.meal.mealId}">删除</a></td>
+							<td><s:property value="id" /></td>
+							<td><s:property value="loginName" /></td>
+
+							<td><s:property value="trueName" /></td>
+							<td><s:property value="email" /></td>
+							<td><s:property value="phone" /></td>
+							<td><s:property value="address" /></td>
 						</tr>
-						<s:set var="sumPrice"
-							value="#sumPrice+value.quantity*value.meal.mealPrice" />
 					</s:iterator>
-					<tr style="background-color:#CCCCFF;">
-						<td>合计</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>￥：<s:property value="#sumPrice" /> <s:set
-								var="sumPrice" value="#sumPrice" scope="session" />
-						</td>
-						<td>-</td>
-					</tr>
-				</table> <br />
-				<table width="300" cellspacing="0" cellpadding="4" align="center"
-					style="text-align:center; border:1px #cccccc solid;">
-					<tr style="background-color:#CCCCFF;">
-						<td><a href="/Restraunt/clearCart">清空购物车</a></td>
-						<td><a href="/Restraunt/toShowMeal">继续购物</a></td>
-						<td><a href="/Restraunt/addOrders">生成订单</a></td>
-					</tr>
-				</table></td>
+
+					<table align="right">
+						<tr>
+							<td width="130"></td>
+							<td width="80"><s:if test="pager.curPage>1">
+									<a href='/Restraunt/getAllUsers?pager.curPage=1'>首页</a>&nbsp;&nbsp;
+									<a
+										href='/Restraunt/getAllUsers?pager.curPage=${pager.curPage-1 }'>上一页</a>
+								</s:if></td>
+							<td width="80"><s:if test="pager.curPage < pager.pageCount">
+									<a
+										href='/Restraunt/getAllUsers?pager.curPage=${pager.curPage+1}'>下一页</a>&nbsp;&nbsp;
+									<a
+										href='/Restraunt/getAllUsers?pager.curPage=${pager.pageCount}'>尾页</a>
+								</s:if></td>
+							<td>共${pager.rowCount}记录，共${pager.curPage}/${pager.pageCount}页&nbsp;&nbsp;
+
+							</td>
+						</tr>
+					</table>
+
+
+				</table> <br /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center"><br>
-				<hr width=100%> <br></td>
+				<hr width=100%> <br> <br></td>
 		</tr>
 	</table>
 	<footer class="footer" id="footer">

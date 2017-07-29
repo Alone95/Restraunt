@@ -8,9 +8,15 @@ import com.restraunt.biz.MealBiz;
 import com.restraunt.biz.MealSeriesBiz;
 import com.restraunt.entity.CartItemBean;
 import com.restraunt.entity.Meal;
-
+/**
+ * 
+ * @author lds
+ *
+ */
 public class CartAction extends ActionSupport implements SessionAware {	
-	//封装表单传递来的餐品编号mealId参数值
+	/**
+	 * 封装表单传递来的餐品编号mealId参数值
+	 */
 	private Integer mealId;
 	public void setMealId(Integer mealId) {
 		this.mealId = mealId;
@@ -18,7 +24,9 @@ public class CartAction extends ActionSupport implements SessionAware {
 	public Integer getMealId() {
 		return mealId;
 	}
-	//封装表单传递来的餐品数量quantity参数值
+	/**
+	 * 封装表单传递来的餐品数量quantity参数值
+	 */
 	int quantity;	
 	public int getQuantity() {
 		return quantity;
@@ -39,7 +47,13 @@ public class CartAction extends ActionSupport implements SessionAware {
 	public void setSession(Map<String, Object> session) {
 		this.session=session;
 	}
-	//将餐品添加到购物车
+	
+	
+	/**
+	 * 将餐品添加到购物车
+	 * @return "shopCart"
+	 * @throws Exception
+	 */
 	public String addtoshopcart() throws Exception {
 		//从session中取出购物车，放入Map对象cart中
 		Map cart=(Map)session.get("cart");
@@ -63,7 +77,11 @@ public class CartAction extends ActionSupport implements SessionAware {
 		return "shopCart";
 	}	
 	
-	//更改数量
+	/**
+	 * 更改数量
+	 * @return "shopCart"
+	 * @throws Exception
+	 */
 	public String updateSelectedQuantity() throws Exception {
 		//从session中取出购物车，放入Map对象cart中
 	    Map cart=(Map)session.get("cart");
@@ -72,7 +90,11 @@ public class CartAction extends ActionSupport implements SessionAware {
 	    return "shopCart";
 	}
 	
-	//从购物车中移除指定编号订单
+	/**
+	 * 从购物车中移除指定编号订单
+	 * @return "shopCart"
+	 * @throws Exception
+	 */
 	public String deleteSelectedOrders() throws Exception {
 		//从session中取出购物车，放入Map对象cart中
 	    Map cart=(Map)session.get("cart");
@@ -80,7 +102,11 @@ public class CartAction extends ActionSupport implements SessionAware {
 	    return "shopCart";
 	}	
 	
-	//清空购物车
+	/**
+	 * 清空购物车
+	 * @return "shopCart"
+	 * @throws Exception
+	 */
 	public String clearCart() throws Exception {
 		//从session中取出购物车，放入Map对象cart中
 	    Map cart=(Map)session.get("cart");

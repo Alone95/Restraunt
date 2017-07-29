@@ -135,6 +135,8 @@
 		<action name="modifyUsers" class="userAction" method="modifyUsers">			
 			<result name="show" type="redirectAction">toShowMeal</result>	
 		</action>
-		
+		<action name="getAllUsers" class="userAction" method="getAllUsers">
+			<result name="showUsers">/showAllUsers.jsp</result>
+		</action>
 	</package>
 </struts>    

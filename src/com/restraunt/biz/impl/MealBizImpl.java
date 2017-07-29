@@ -32,22 +32,7 @@ public class MealBizImpl implements MealBiz {
 		return pager;
 	}
 	
-	/*@Override
-	public List getMealBySeries(int mealSeries, int page) {
-		return mealDAO.getMealBySeries(mealSeries, page);
-	}*/
-	/*@Override
-	public Pager getPagerOfMeal(int mealSeries) {
-		int count= mealDAO.getCountOfMeal(mealSeries);
-		//使用分页类Pager定义对象
-		Pager pager=new Pager();
-		//设置pager对象中的perPageRows属性，表示每页显示的记录数
-		pager.setPerPageRows(6);
-		//设置pager对象中的rowCount属性，表示记录总数
-		pager.setRowCount(count);
-	    //返回pager对象
-		return pager;
-	}*/
+	
 	
 	@Override
 	public List getMealByCondition(Meal condition, int page) {		

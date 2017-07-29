@@ -13,7 +13,7 @@
         <property name="seriesName" type="java.lang.String">
             <column name="SeriesName" length="10" />
         </property>
-        <set name="meals" inverse="true">
+        <set name="meals" inverse="true" lazy="false">
             <key>
                 <column name="MealSeriesId" />
             </key>

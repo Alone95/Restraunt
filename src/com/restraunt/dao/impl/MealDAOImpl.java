@@ -45,23 +45,6 @@ public class MealDAOImpl implements MealDAO {
 		return count;
 	}
 
-	/*
-	 * @Override public List getMealBySeries(int mealSeries, int page) { Session
-	 * session=sessionFactory.getCurrentSession(); Criteria
-	 * c=session.createCriteria(Meal.class);
-	 * c.add(Restrictions.eq("mealseries.seriesId", mealSeries));
-	 * c.setFirstResult(6*(page-1)); c.setMaxResults(6); return c.list(); }
-	 */
-
-	/*
-	 * @Override public Integer getCountOfMeal(int mealSeries) { Integer
-	 * count=null; try{ Session session=sessionFactory.getCurrentSession();
-	 * String
-	 * hql="select count(s) from Meal s where mealseries.seriesId="+mealSeries;
-	 * Query query=session.createQuery(hql); count=
-	 * Integer.parseInt(query.uniqueResult().toString()) ; }catch(Exception e){
-	 * e.printStackTrace(); } return count; }
-	 */
 
 	@Override
 	public List getMealByCondition(Meal condition, int page) {

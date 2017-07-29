@@ -15,9 +15,17 @@ import com.restraunt.entity.Meal;
 import com.restraunt.entity.Pager;
 import org.apache.commons.io.FileUtils;
 
+/**
+ * 
+ * @author lds
+ *  
+ *
+ */
 public class MealAction extends ActionSupport implements RequestAware {
 	
-	//定义Meal类型属性，用于封装表单参数
+	/**
+	 * 定义Meal类型属性，用于封装表单参数
+	 */
 	private Meal meal;	
 	public Meal getMeal() {
 		return meal;
@@ -33,7 +41,9 @@ public class MealAction extends ActionSupport implements RequestAware {
 	public void setMealSeriesBiz(MealSeriesBiz mealSeriesBiz) {
 		this.mealSeriesBiz = mealSeriesBiz;
 	}
-	//分页实体类
+	/**
+	 * 分页实体类
+	 */
 	private Pager pager;
 	public Pager getPager() {
 		return pager;
@@ -52,7 +62,11 @@ public class MealAction extends ActionSupport implements RequestAware {
 		this.request=request;		
 	}
 	
-	//获取指定页码、符合查询条件的餐品列表，再转到餐品显示页show.jsp
+	/**
+	 * 获取指定页码、符合查询条件的餐品列表，再转到餐品显示页show.jsp
+	 * @return "toShowMeal"
+	 * @throws Exception
+	 */
 	public String toShowMeal() throws Exception {		
 		int curPage=1;
 		if(pager!=null)
@@ -91,14 +105,22 @@ public class MealAction extends ActionSupport implements RequestAware {
 		return "toShowDetails";
 	}
 	
-	//获取菜系列表，再转到添加餐品页addMeal.jsp
+	/**
+	 * 获取菜系列表，再转到添加餐品页addMeal.jsp
+	 * @return "addMeal"
+	 * @throws Exception
+	 */
 	public String toAddMeal() throws Exception {		
 		List mealSeriesList=mealSeriesBiz.getMealSeries();
 		request.put("mealSeriesList", mealSeriesList);	
 		return "addMeal";
 	}
 	
-	//上传餐品图片、添加餐品信息，再转到toShowMeal
+	/**
+	 * 上传餐品图片、添加餐品信息，再转到toShowMeal
+	 * @return "toShowMeal"
+	 * @throws Exception
+	 */
 	public String doAddMeal() throws Exception {
 		if(docFileName!=null){     //判断是否选择了上传图片
 			// 得到当前web工程下的upload目录的在本机的绝对路径，如果没有这个文件夹则会创建        
@@ -115,7 +137,11 @@ public class MealAction extends ActionSupport implements RequestAware {
 		return "toShowMeal";
 	}
 	
-	//重命名上传文件    
+	/**
+	 * 重命名上传文件    
+	 * @param fileName
+	 * @return formatDate + random +extension
+	 */
     public String generateFileName(String fileName){          
     	String formatDate = new SimpleDateFormat("yyMMddHHmmss").format(new Date());          
     	int random = new Random().nextInt(10000);          
@@ -125,7 +151,11 @@ public class MealAction extends ActionSupport implements RequestAware {
     }    
     
     
-    //获取指定页码、符合查询条件的餐品列表，再转到菜品管理页managemeal.jsp
+    /**
+     * 获取指定页码、符合查询条件的餐品列表，再转到菜品管理页managemeal.jsp
+     * @return "managemeal"
+     * @throws Exception
+     */
     public String toManageMeal() throws Exception {		
 		int curPage=1;
 		if(pager!=null)
@@ -152,7 +182,11 @@ public class MealAction extends ActionSupport implements RequestAware {
 		return "managemeal";
 	}
     
-    //获取要修改的餐品对象，存入request范围，再转到餐品信息修改页
+    /**
+     * 获取要修改的餐品对象，存入request范围，再转到餐品信息修改页
+     * @return "updateMeal"
+     * @throws Exception
+     */
     public String toUpdateMeal() throws Exception {	
     	//获取要修改的餐品对象，存入request范围
     	Meal updatedMeal=mealBiz.getMealByMealId(meal.getMealId());
@@ -163,10 +197,14 @@ public class MealAction extends ActionSupport implements RequestAware {
 		return "updateMeal";
     }
     
-    //执行餐品信息修改，再转到toShowMeal
+    /**
+     * 执行餐品信息修改，再转到toShowMeal
+     * @return "toShowMeal"
+     * @throws Exception
+     */
     public String doUpdateMeal() throws Exception {	
     	if(docFileName!=null){
-	    	// 得到当前web工程下的upload目录的在本机的绝对路径，如果没有这个文件夹则会创建        
+	    	// 得到当前web工程下的上传目录的在本机的绝对路径，如果没有这个文件夹则会创建        
 		    String targetDirectory = ServletActionContext.getServletContext().getRealPath("/mealimages");          
 		    //重命名上传文件         
 		    String targetFileName = generateFileName(docFileName);          
@@ -182,7 +220,11 @@ public class MealAction extends ActionSupport implements RequestAware {
 		return "toShowMeal";    	
     } 
     
-    //处理删除餐品对象请求，再转到toManageMeal
+    /**
+     * 处理删除餐品对象请求，再转到toManageMeal
+     * @return "toManageMeal"
+     * @throws Exception
+     */
     public String deleteMeal() throws Exception {	
     	mealBiz.deleteMeal(meal.getMealId());
     	return "toManageMeal";
