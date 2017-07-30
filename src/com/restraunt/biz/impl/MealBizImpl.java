@@ -15,6 +15,11 @@ public class MealBizImpl implements MealBiz {
 	}
 	
 	@Override
+	public List getAll() {
+		return mealDAO.getAll();
+	}
+	
+	@Override
 	public List getAllMeal(int page) {
 		return mealDAO.getAllMeal(page);
 	}
@@ -76,4 +81,6 @@ public class MealBizImpl implements MealBiz {
 	public void updateMeal(Meal meal) {
 		mealDAO.updateMeal(meal);		
 	}
+
+	
 }

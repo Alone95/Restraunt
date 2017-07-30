@@ -134,4 +134,7 @@
 		<property name="userBiz" ref="userBiz" />
 	</bean>
 	
+	<bean id="androidMeal" class="com.restraunt.action.AndroidMealAction">
+			<property name="mealBiz" ref="mealBiz"/>
+	</bean>
 </beans>

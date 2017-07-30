@@ -19,7 +19,13 @@ public class MealDAOImpl implements MealDAO {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
+	
+	@Override
+	public List getAll(){
+		Session session =sessionFactory.getCurrentSession();
+		Criteria c = session.createCriteria(Meal.class);
+		return c.list();
+	}
 	// 获取指定页显示的餐品列表
 	@Override
 	public List getAllMeal(int page) {

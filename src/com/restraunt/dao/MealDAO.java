@@ -5,6 +5,9 @@ import java.util.List;
 import com.restraunt.entity.Meal;
 
 public interface MealDAO {
+	
+	
+	public List getAll();
 	//获取指定页显示的菜品列表
 	public List getAllMeal(int page);
 	

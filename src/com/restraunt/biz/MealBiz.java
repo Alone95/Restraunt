@@ -6,6 +6,8 @@ import com.restraunt.entity.Meal;
 import com.restraunt.entity.Pager;
 
 public interface MealBiz {
+	
+	public List getAll();
 	//获取指定页显示的餐品列表
 	public List getAllMeal(int page);
 	//获取所有菜品数量,用来初始化分页类Pager对象，并设置其perPageRows和rowCount属性

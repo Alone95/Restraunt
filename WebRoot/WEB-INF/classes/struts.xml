@@ -138,5 +138,10 @@
 		<action name="getAllUsers" class="userAction" method="getAllUsers">
 			<result name="showUsers">/showAllUsers.jsp</result>
 		</action>
+		
+		<action name="ameal*" method="{1}" class="androidMeal">
+			<result>androidmeal.jsp</result>
+		</action>
+		
 	</package>
 </struts>    
